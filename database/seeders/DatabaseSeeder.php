@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Cliente;
@@ -11,40 +12,36 @@ use Database\Seeders\UserSeeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
-    {// 1. Ejecutamos el seeder de usuarios que ya armaron (Admin y Mecánico)
-    $this->call([
+    {
+        // 1. Ejecutamos el seeder de usuarios que ya armaron (Admin y Mecánico)
+        $this->call([
             ClienteSeeder::class,
             VehiculoSeeder::class,
             OrdenSeeder::class,
             UserSeeder::class,
         ]);
 
-    // 2. Creamos 5 servicios fijos en el catálogo
-    Servicio::factory(5)->create();
+        // 2. Creamos 5 servicios fijos en el catálogo
+        Servicio::factory(5)->create();
 
-    // 3. Creamos 15 clientes, y a cada uno le asignamos 1 o 2 vehículos automáticamente
-    Cliente::factory(15)->create()->each(function ($cliente) {
-        $vehiculos = Vehiculo::factory(rand(1, 2))->create([
-            'cliente_id' => $cliente->id
-        ]);
-
-        // 4. A cada vehículo le creamos una orden de trabajo de prueba
-        foreach ($vehiculos as $vehiculo) {
-            OrdenTrabajo::factory()->create([
-                'vehiculo_id' => $vehiculo->id
+        // 3. Creamos 15 clientes, y a cada uno le asignamos 1 o 2 vehículos automáticamente
+        Cliente::factory(15)->create()->each(function ($cliente) {
+            $vehiculos = Vehiculo::factory(rand(1, 2))->create([
+                'cliente_id' => $cliente->id
             ]);
-        }
 
-    //User::factory()->create([
-            //'name' => 'Test User',
-            //'email' => 'test@example.com',
-        //]);
-    });
-}
+            // 4. A cada vehículo le creamos una orden de trabajo de prueba
+            foreach ($vehiculos as $vehiculo) {
+                OrdenTrabajo::factory()->create([
+                    'vehiculo_id' => $vehiculo->id
+                ]);
+            }
+
+            //User::factory()->create([
+            //    'name' => 'Test User',
+            //    'email' => 'test@example.com',
+            //]);
+        });
+    }
 }

@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\VehiculoController;
+use App\Http\Controllers\OrdenTrabajoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,9 +21,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('clientes', ClienteController::class);
+    Route::resource('vehiculos', VehiculoController::class);
+    Route::resource('ordenes-trabajo', OrdenTrabajoController::class);
 });
 
 Route::middleware('auth')->group(function () {
