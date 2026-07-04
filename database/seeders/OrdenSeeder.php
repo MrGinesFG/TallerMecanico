@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Vehiculo;
 use App\Models\OrdenTrabajo;
 
 class OrdenSeeder extends Seeder
@@ -13,8 +14,11 @@ class OrdenSeeder extends Seeder
      */
     public function run(): void
     {
+        $vehiculo = Vehiculo::first();
+
         OrdenTrabajo::create([
-            'estado' => 'pendiente'
+            'vehiculo_id' => $vehiculo->id,
+            'estado' => 'pendiente',
         ]);
     }
 }
