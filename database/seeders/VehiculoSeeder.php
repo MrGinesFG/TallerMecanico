@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Cliente;
 use App\Models\Vehiculo;
 
 class VehiculoSeeder extends Seeder
@@ -14,13 +13,13 @@ class VehiculoSeeder extends Seeder
      */
     public function run(): void
     {
-        $cliente = Cliente::first();
 
         Vehiculo::create([
-            'cliente_id' => $cliente->id,
+            'cliente_id' => 1,
             'marca' => 'Toyota',
             'modelo' => 'Corolla',
             'patente' => 'ABC123',
+            'anio' => 2020,
         ]);
     }
 }
