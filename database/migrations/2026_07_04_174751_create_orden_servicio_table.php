@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('orden_servicio', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('orden_trabajo_id')->constrained()->onDelete('cascade');
+            $table->foreignId('servicio_id')->constrained()->onDelete('cascade');
+            $table->integer('cantidad')->default(1);
+            $table->decimal('precio_unitario', 10, 2);
         });
     }
 
