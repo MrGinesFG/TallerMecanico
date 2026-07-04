@@ -20,7 +20,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {// 1. Ejecutamos el seeder de usuarios que ya armaron (Admin y Mecánico)
-    $this->call(UserSeeder::class);
+    $this->call([
+            ClienteSeeder::class,
+            VehiculoSeeder::class,
+            OrdenSeeder::class,
+            UserSeeder::class,
+        ]);
 
     // 2. Creamos 5 servicios fijos en el catálogo
     Servicio::factory(5)->create();
@@ -37,6 +42,11 @@ class DatabaseSeeder extends Seeder
                 'vehiculo_id' => $vehiculo->id
             ]);
         }
+
+    User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
     });
 }
 }
