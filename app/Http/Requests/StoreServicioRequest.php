@@ -23,7 +23,9 @@ class StoreServicioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nombre' => 'required|max:100',
+            'descripcion' => 'nullable|max:255',
+            'precio_base' => 'required|numeric|min:0',
         ];
     }
 }
