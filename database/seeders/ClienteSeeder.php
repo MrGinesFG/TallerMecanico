@@ -14,9 +14,10 @@ class ClienteSeeder extends Seeder
     public function run(): void
     {
         Cliente::create([
-            'nombre' => 'Juan Pérez',
+            'nombre' => 'Juan',
+            'apellido' => 'Pérez',
             'telefono' => '3704000000',
-            'email' => 'juan@gmail.com'
+            'email' => 'juan@gmail.com',
         ]);
     }
 }
