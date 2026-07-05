@@ -19,6 +19,7 @@ class OrdenSeeder extends Seeder
         OrdenTrabajo::create([
             'vehiculo_id' => $vehiculo->id,
             'descripcion' => 'Cambio de aceite y filtros',
+            'fecha_ingreso' => now(),
             'estado' => 'pendiente',    
         ]);
     }
