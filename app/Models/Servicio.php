@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Servicio extends Model
 {
    use HasFactory;
+   protected $fillable = [
+        'nombre',
+        'descripcion',
+        'precio_base'
+    ];
+
+    public function ordenes()
+    {
+        return $this->belongsToMany(
+            OrdenTrabajo::class,
+            'orden_servicio'
+        );
+    }
 }

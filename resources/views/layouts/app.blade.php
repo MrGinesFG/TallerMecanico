@@ -29,7 +29,11 @@
 
             <!-- Page Content -->
             <main>
+<<<<<<< HEAD
                 {{ $slot }}
+=======
+                @yield('content')
+>>>>>>> feature/api-taller
             </main>
         </div>
     </body>

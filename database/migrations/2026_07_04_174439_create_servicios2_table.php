@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::create('servicios', function (Blueprint $table) {
-        $table->id();
-        $table->string('nombre');       // <-- Agregamos esto
-        $table->text('descripcion')->nullable(); // <-- Agregamos esto
-        $table->decimal('precio_base', 10, 2); // <-- Agregamos esto
-        $table->timestamps();
-    });
+        Schema::create('servicios2', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->text('descripcion')->nullable();
+            $table->decimal('precio_base', 10, 2);
+            $table->timestamps();
+        });
     }
 
     /**

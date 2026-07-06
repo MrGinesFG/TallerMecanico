@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ClientController; 
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\ClientController;
+>>>>>>> feature/api-taller
+use App\Http\Controllers\ServicioController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,8 +22,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+<<<<<<< HEAD
+require __DIR__.'/auth.php';
+=======
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('clientes', ClientController::class);
 });
 
+Route::middleware('auth')->group(function () {
+    Route::resource('servicios', ServicioController::class);
+});
+
 require __DIR__.'/auth.php';
+>>>>>>> feature/api-taller
