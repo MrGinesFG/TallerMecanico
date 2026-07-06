@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Servicio extends Model
 {
-   use HasFactory;
-   protected $fillable = [
+    use HasFactory;
+
+    protected $table = 'servicios2';
+
+    protected $fillable = [
         'nombre',
         'descripcion',
         'precio_base'
@@ -18,7 +21,9 @@ class Servicio extends Model
     {
         return $this->belongsToMany(
             OrdenTrabajo::class,
-            'orden_servicio'
+            'orden_servicios2',
+            'orden_trabajo_id',
+            'servicios2_id'
         );
     }
 }
