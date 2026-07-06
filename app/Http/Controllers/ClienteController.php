@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Client;
-use App\Http\Requests\StoreClientRequest;
-use App\Http\Requests\UpdateClientRequest;
+use App\Models\Cliente;
+use App\Http\Requests\StoreClienteRequest;
+use App\Http\Requests\UpdateClienteRequest;
 
-class ClientController extends Controller
+class ClienteController extends Controller
 {
     public function index()
     {
@@ -18,25 +18,25 @@ class ClientController extends Controller
         return view('clientes.create');
     }
 
-    public function store(StoreClientRequest $request)
+    public function store(StoreClienteRequest $request)
     {
-        Client::create($request->validated());
+        Cliente::create($request->validated());
 
         return redirect()->route('clientes.index')
             ->with('success', 'Cliente creado correctamente.');
     }
 
-    public function show(Client $cliente)
+    public function show(Cliente $cliente)
     {
         return view('clientes.show', compact('cliente'));
     }
 
-    public function edit(Client $cliente)
+    public function edit(Cliente $cliente)
     {
         return view('clientes.edit', compact('cliente'));
     }
 
-    public function update(UpdateClientRequest $request, Client $cliente)
+    public function update(UpdateClienteRequest $request, Cliente $cliente)
     {
         $cliente->update($request->validated());
 
@@ -44,7 +44,7 @@ class ClientController extends Controller
             ->with('success', 'Cliente actualizado correctamente.');
     }
 
-    public function destroy(Client $cliente)
+    public function destroy(Cliente $cliente)
     {
         $cliente->delete();
 

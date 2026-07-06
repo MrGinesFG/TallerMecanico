@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ServicioController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::resource('clientes', ClientController::class);
+    Route::resource('clientes', ClienteController::class);
 });
 
 Route::middleware('auth')->group(function () {
