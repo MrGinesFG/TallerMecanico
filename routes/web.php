@@ -1,10 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\ClientController;
->>>>>>> feature/api-taller
 use App\Http\Controllers\ServicioController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-<<<<<<< HEAD
 require __DIR__.'/auth.php';
-=======
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('clientes', ClientController::class);
 });
@@ -34,4 +29,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
->>>>>>> feature/api-taller

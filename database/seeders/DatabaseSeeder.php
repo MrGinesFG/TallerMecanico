@@ -17,11 +17,6 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-<<<<<<< HEAD
-    {
-        
-    }
-=======
     {// 1. Ejecutamos el seeder de usuarios que ya armaron (Admin y Mecánico)
     $this->call([
             ClienteSeeder::class,
@@ -52,5 +47,4 @@ class DatabaseSeeder extends Seeder
         //]);
     });
 }
->>>>>>> feature/api-taller
 }

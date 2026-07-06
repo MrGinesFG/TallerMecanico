@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import './bootstrap';
-=======
-
->>>>>>> feature/api-taller
 
 import Alpine from 'alpinejs';
 
