@@ -107,7 +107,7 @@
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            gap: 20px;
+            gap: 1.5rem;
         }
 
         .topbar__link {
@@ -149,6 +149,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 14px 24px;
+            gap: 2rem;
         }
 
         .nav__brand {
@@ -170,10 +171,14 @@
         }
 
         .nav__links {
+            align-items: center;
             display: flex;
-            gap: 32px;
+            gap: 2rem;
             font-weight: 500;
             font-size: 0.95rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
 
         .nav__links a {
@@ -555,9 +560,10 @@
     <header>
         <nav class="nav container">
             <a href="#" class="nav__brand">
-                <img src="{{ asset('images/monkey-motors-logo.png') }}" alt="Monkey Motors">
+                <img src="{{ asset('images/monkey-motors-logo-2.png') }}" alt="Monkey Motors">
                 <span>Monkey Motors</span>
             </a>
+
             <ul class="nav__links">
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
@@ -565,7 +571,7 @@
             </ul>
             @if (Route::has('login'))
 
-                <div class="container topbar__inner">
+                <div class="topbar__inner">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="topbar__link topbar__link--cta">Ir al panel</a>
                     @else
@@ -676,7 +682,8 @@
                 <p>Monkey Motors nació de la idea de que un taller de confianza no tiene por qué ser un lugar frío.
                     Nuestro equipo de mecánicos certificados combina experiencia real con equipamiento moderno para
                     diagnosticar y resolver lo que tu auto necesita.</p>
-                <p>Trabajamos con transparencia: te mostramos qué encontramos, qué hace falta y cuánto sale, antes de
+                <p>Trabajamos con transparencia: te mostramos qué encontramos, qué hace falta y cuánto sale, antes
+                    de
                     tocar una tuerca.</p>
                 <a href="#contacto" class="btn btn--primary">Conocé el taller</a>
             </div>
@@ -722,7 +729,8 @@
     <footer>
         <div class="container">
             <div>© {{ date('Y') }} Monkey Motors. Todos los derechos reservados.</div>
-            <div class="mono">Hecho con grasa, café y cariño 🐒🔧</div>
+            <div class="mono">UTN FRRe - Tecnicatura Universitaria en Programación</div>
+            <div class="mono">Desarrolladores: Cuellar Alex, Ginés Fabrizio, Mendoza Fabian, Sanchez Martin.</div>
         </div>
     </footer>
 

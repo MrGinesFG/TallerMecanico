@@ -6,14 +6,13 @@
     </x-slot>
 
     <div class="py-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white shadow rounded-lg p-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <a href="{{ route('vehiculos.create') }}"
-               class="bg-blue-500 text-white px-4 py-2 rounded">
+            <a href="{{ route('vehiculos.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">
                 Nuevo Vehículo
             </a>
 
-            <table class="table-auto w-full mt-4 border">
+            <table class="table-auto w-full mt-4 border rounded bg-white">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -43,9 +42,8 @@
                                     Editar
                                 </a>
 
-                                <form action="{{ route('vehiculos.destroy', $vehiculo->id) }}"
-                                      method="POST"
-                                      style="display:inline">
+                                <form action="{{ route('vehiculos.destroy', $vehiculo->id) }}" method="POST"
+                                    style="display:inline">
 
                                     @csrf
                                     @method('DELETE')
