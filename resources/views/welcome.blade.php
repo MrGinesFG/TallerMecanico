@@ -111,8 +111,9 @@
         }
 
         .topbar__link {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
             color: var(--brown-dark);
             opacity: 0.9;
             transition: opacity 0.2s ease;
