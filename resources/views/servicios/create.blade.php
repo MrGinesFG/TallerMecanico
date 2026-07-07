@@ -1,21 +1,56 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Nuevo Servicio
+        </h2>
+    </x-slot>
 
-@section('content')
-<div class="container">
-    <h1>Nuevo Servicio</h1>
+    <div class="py-12">
+        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
 
-    <form action="{{ route('servicios.store') }}" method="POST">
-        @csrf
+            <div class="bg-white shadow rounded-lg p-6">
 
-        <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2">
+                <form action="{{ route('servicios.store') }}" method="POST">
 
-        <textarea name="descripcion" placeholder="Descripción" class="form-control mb-2"></textarea>
+                    @csrf
 
-        <input type="number" step="0.01" name="precio_base" placeholder="Precio" class="form-control mb-2">
+                    <div class="mb-4">
+                        <label>Nombre</label>
 
-        <button type="submit" class="btn btn-success">
-            Guardar
-        </button>
-    </form>
-</div>
-@endsection
+                        <input
+                            type="text"
+                            name="nombre"
+                            class="w-full border rounded p-2">
+                    </div>
+
+                    <div class="mb-4">
+                        <label>Descripción</label>
+
+                        <textarea
+                            name="descripcion"
+                            class="w-full border rounded p-2"></textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label>Precio Base</label>
+
+                        <input
+                            type="number"
+                            step="0.01"
+                            name="precio_base"
+                            class="w-full border rounded p-2">
+                    </div>
+
+                    <button
+                        class="bg-green-600 text-white px-4 py-2 rounded">
+                        Guardar
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</x-app-layout>
