@@ -1,160 +1,106 @@
-<section>
+<div class="bg-white rounded-3xl shadow-xl p-10">
 
-    <header style="margin-bottom:25px;">
-        <h2 style="
-            font-size:28px;
-            color:#1F4D32;
-            font-family:Poppins,sans-serif;
-            font-weight:700;">
-            Información Personal
+    <div class="text-center">
+
+        <img
+            src="{{ asset('images/monkey-motors-logo.png') }}"
+            class="w-28 mx-auto mb-5">
+
+        <h2 class="text-3xl font-bold text-green-800">
+
+            {{ $user->name }}
+
         </h2>
 
-        <p style="
-            color:#6B4A35;
-            margin-top:8px;">
-            Actualiza tu nombre y correo electrónico.
+        <p class="text-gray-500 mb-8">
+
+            {{ $user->email }}
+
         </p>
-    </header>
 
-    <form id="send-verification" method="POST" action="{{ route('verification.send') }}">
-        @csrf
-    </form>
+    </div>
 
-    <form method="POST"
-          action="{{ route('profile.update') }}"
-          class="space-y-6">
+    <form
+        method="POST"
+        action="{{ route('profile.update') }}">
 
         @csrf
         @method('PATCH')
 
-        <div style="margin-bottom:20px;">
+        <div class="mb-6">
 
-            <label
-                for="name"
-                style="
-                    display:block;
-                    margin-bottom:8px;
-                    font-weight:600;
-                    color:#2E6F47;">
-                Nombre
+            <label class="block text-green-800 font-bold mb-2">
+
+                Nombre Completo
+
             </label>
 
             <input
-                id="name"
-                name="name"
                 type="text"
+                name="name"
                 value="{{ old('name',$user->name) }}"
-                required
-                autofocus
+                class="w-full rounded-xl border-gray-300 focus:border-green-700 focus:ring-green-700">
 
-                style="
-                    width:100%;
-                    padding:14px;
-                    border-radius:10px;
-                    border:2px solid #DDD;
-                    font-size:15px;
-                ">
+            @error('name')
 
-            <x-input-error
-                class="mt-2"
-                :messages="$errors->get('name')" />
+                <p class="text-red-500 mt-2">
+                    {{ $message }}
+                </p>
+
+            @enderror
 
         </div>
 
-        <div style="margin-bottom:25px;">
+        <div class="mb-8">
 
-            <label
-                for="email"
-                style="
-                    display:block;
-                    margin-bottom:8px;
-                    font-weight:600;
-                    color:#2E6F47;">
-                Correo electrónico
+            <label class="block text-green-800 font-bold mb-2">
+
+                Correo Electrónico
+
             </label>
 
             <input
-                id="email"
-                name="email"
                 type="email"
+                name="email"
                 value="{{ old('email',$user->email) }}"
-                required
+                class="w-full rounded-xl border-gray-300 focus:border-green-700 focus:ring-green-700">
 
-                style="
-                    width:100%;
-                    padding:14px;
-                    border-radius:10px;
-                    border:2px solid #DDD;
-                    font-size:15px;
-                ">
+            @error('email')
 
-            <x-input-error
-                class="mt-2"
-                :messages="$errors->get('email')" />
+                <p class="text-red-500 mt-2">
+                    {{ $message }}
+                </p>
+
+            @enderror
 
         </div>
 
-        @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+        <div class="text-center">
 
-            <div style="
-                background:#FFF8E1;
-                padding:15px;
-                border-radius:10px;
-                margin-bottom:25px;">
+            <button
+                type="submit"
+                class="bg-green-700 hover:bg-green-800 text-white font-bold px-10 py-3 rounded-xl transition">
 
-                <p>
+                Guardar Cambios
 
-                    Tu correo aún no está verificado.
+            </button>
 
-                    <button
-                        form="send-verification"
-                        style="
-                            border:none;
-                            background:none;
-                            color:#2E6F47;
-                            font-weight:bold;
-                            cursor:pointer;">
+        </div>
 
-                        Reenviar correo de verificación
+        @if(session('status')=='profile-updated')
 
-                    </button>
+            <div class="mt-6 text-center">
 
-                </p>
+                <span class="text-green-700 font-semibold">
+
+                    ✔ Perfil actualizado correctamente.
+
+                </span>
 
             </div>
 
         @endif
 
-        <button
-            type="submit"
-
-            style="
-                background:#2E6F47;
-                color:white;
-                padding:14px 28px;
-                border:none;
-                border-radius:10px;
-                font-size:16px;
-                cursor:pointer;
-                font-weight:bold;">
-
-            Guardar cambios
-
-        </button>
-
-        @if(session('status')==='profile-updated')
-
-            <span style="
-                margin-left:15px;
-                color:green;
-                font-weight:bold;">
-
-                ✔ Datos actualizados correctamente
-
-            </span>
-
-        @endif
-
     </form>
 
-</section>
+</div>
