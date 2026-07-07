@@ -1,8 +1,8 @@
 <?php
 
 namespace Database\Seeders;
-
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
 use App\Models\Cliente;
 use App\Models\Vehiculo;
@@ -13,8 +13,7 @@ use Database\Seeders\UserSeeder;
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
-    {
-        // 1. Ejecutamos el seeder de usuarios que ya armaron (Admin y Mecánico)
+    {// 1. Ejecutamos el seeder de usuarios que ya armaron (Admin y Mecánico)
         $this->call([
             ClienteSeeder::class,
             VehiculoSeeder::class,
@@ -39,8 +38,8 @@ class DatabaseSeeder extends Seeder
             }
 
             //User::factory()->create([
-            //    'name' => 'Test User',
-            //    'email' => 'test@example.com',
+            //'name' => 'Test User',
+            //'email' => 'test@example.com',
             //]);
         });
     }
