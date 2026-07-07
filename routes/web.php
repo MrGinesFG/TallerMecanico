@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+<<<<<<< HEAD
 use App\Http\Controllers\ClientController; 
+=======
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ServicioController;
+>>>>>>> dvlp/GinesFabrizio
 use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\OrdenTrabajoController;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +26,17 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
+<<<<<<< HEAD
     Route::resource('clientes', ClientController::class);
+=======
+    Route::resource('clientes', ClienteController::class);
+>>>>>>> dvlp/GinesFabrizio
     Route::resource('vehiculos', VehiculoController::class);
     Route::resource('ordenes-trabajo', OrdenTrabajoController::class);
 });
 
-require __DIR__.'/auth.php';
+Route::middleware('auth')->group(function () {
+    Route::resource('servicios', ServicioController::class);
+});
+
+require __DIR__ . '/auth.php';

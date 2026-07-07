@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\Client;
+use App\Models\Cliente;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -19,13 +19,13 @@ class BuscadorClientes extends Component
 
     public function eliminar(int $id): void
     {
-        Client::findOrFail($id)->delete();
+        Cliente::findOrFail($id)->delete();
 
         session()->flash('success', 'Cliente eliminado correctamente.');
     }
     public function render()
     {
-        $clientes = Client::query()
+        $clientes = Cliente::query()
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
                     $q->where('nombre', 'like', '%' . $this->search . '%')

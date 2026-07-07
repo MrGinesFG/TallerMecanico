@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Client extends Model
+class Cliente extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+
+    protected $table = 'clientes';
 
     protected $fillable = [
         'nombre',
@@ -18,8 +20,16 @@ class Client extends Model
         'direccion',
     ];
     public function vehiculos()
+<<<<<<< HEAD:app/Models/Client.php
 {
     return $this->hasMany(Vehiculo::class);
 }
 
 }
+=======
+    {
+        return $this->hasMany(Vehiculo::class);
+    }
+
+}
+>>>>>>> dvlp/GinesFabrizio:app/Models/Cliente.php

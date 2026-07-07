@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        
-    Schema::create('clients', function (Blueprint $table) {
+       Schema::create('vehiculos', function (Blueprint $table) {
         $table->id();
-        $table->string('nombre');
-        $table->string('apellido');
-        $table->string('telefono')->nullable();
-        $table->string('email')->unique();
-        $table->string('direccion')->nullable();
-        $table->softDeletes(); // para el eliminado lógico que pide el PDF
+        $table->foreignId('cliente_id')->constrained()->onDelete('cascade'); // FK relacional
+        $table->string('marca');
+        $table->string('modelo');
+        $table->integer('anio');
+        $table->string('patente')->unique();
+        $table->string('color')->nullable();
         $table->timestamps();
     });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('vehiculos');
     }
 };

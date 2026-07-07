@@ -43,9 +43,14 @@
                                     Editar
                                 </a>
 
+<<<<<<< HEAD
                                 <form action="{{ route('vehiculos.destroy', $vehiculo->id) }}"
                                       method="POST"
                                       style="display:inline">
+=======
+                                <form action="{{ route('vehiculos.destroy', $vehiculo->id) }}" method="POST"
+                                    style="display:inline">
+>>>>>>> dvlp/GinesFabrizio
 
                                     @csrf
                                     @method('DELETE')
