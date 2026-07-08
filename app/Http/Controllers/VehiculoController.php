@@ -11,8 +11,9 @@ class VehiculoController extends Controller
     public function index()
     {
         $vehiculos = Vehiculo::with('cliente')->get();
+        $clientes = Cliente::all();
 
-        return view('vehiculos.index', compact('vehiculos'));
+        return view('vehiculos.index', compact('vehiculos', 'clientes'));
     }
 
     public function create()

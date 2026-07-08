@@ -11,8 +11,9 @@ class OrdenTrabajoController extends Controller
     public function index()
     {
         $ordenes = OrdenTrabajo::with('vehiculo')->get();
+        $vehiculos = Vehiculo::all();
 
-        return view('ordenes-trabajo.index', compact('ordenes'));
+        return view('ordenes-trabajo.index', compact('ordenes', 'vehiculos'));
     }
 
     public function create()
