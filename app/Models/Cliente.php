@@ -18,10 +18,16 @@ class Cliente extends Model
         'telefono',
         'email',
         'direccion',
+        'user_id',
     ];
     public function vehiculos()
     {
         return $this->hasMany(Vehiculo::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 }

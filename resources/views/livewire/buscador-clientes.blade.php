@@ -34,8 +34,9 @@
                     <a href="{{ route('clientes.show', $cliente) }}" class="text-blue-600 dark:text-blue-400 hover:underline">Ver</a>
                     <a href="{{ route('clientes.edit', $cliente) }}" class="text-brand-yellow hover:text-yellow-600 hover:underline">Editar</a>
                     <button
+                        type="button"
                         wire:click="eliminar({{ $cliente->id }})"
-                        wire:confirm="¿Estás seguro de eliminar a {{ $cliente->nombre }} {{ $cliente->apellido }}?"
+                        onclick="confirm('¿Estás seguro de eliminar a {{ $cliente->nombre }} {{ $cliente->apellido }}?') || event.stopImmediatePropagation()"
                         class="text-red-600 dark:text-red-400 hover:underline">
                         Eliminar
                     </button>

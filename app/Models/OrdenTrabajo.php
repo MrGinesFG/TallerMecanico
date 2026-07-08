@@ -20,5 +20,11 @@ class OrdenTrabajo extends Model
     {
         return $this->belongsTo(Vehiculo::class);
     }
+
+    protected $casts = [
+        'fecha_ingreso' => 'datetime',
+        'fecha_entrega' => 'datetime',
+        'costo_total' => 'decimal:2',
+    ];
 }
 

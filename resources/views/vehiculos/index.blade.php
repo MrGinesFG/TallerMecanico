@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl font-heading text-brand-green-dark dark:text-brand-green leading-tight">
-            Vehículos
+            {{ Auth::user()->rol === 'cliente' ? 'Mis Vehículos' : 'Vehículos' }}
         </h2>
     </x-slot>
 
@@ -13,11 +13,13 @@
             </div>
         @endif
 
+        @if(Auth::user()->rol !== 'cliente')
         <div class="mb-4">
             <button x-data x-on:click.prevent="$dispatch('open-modal', 'crear-vehiculo')" class="bg-brand-yellow hover:bg-yellow-500 text-brand-brown-dark font-semibold px-4 py-2 rounded shadow-sm transition-colors duration-200">
                 + Nuevo Vehículo
             </button>
         </div>
+        @endif
 
         <div class="bg-white dark:bg-gray-800 border border-brand-cream-2 dark:border-gray-700 shadow rounded-lg p-6 transition-colors duration-200">
             <table class="min-w-full divide-y divide-brand-cream-2 dark:divide-gray-700">
@@ -29,7 +31,9 @@
                         <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-brand-brown dark:text-gray-400">Modelo</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-brand-brown dark:text-gray-400">Patente</th>
                         <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-brand-brown dark:text-gray-400">Año</th>
+                        @if(Auth::user()->rol !== 'cliente')
                         <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-brand-brown dark:text-gray-400">Acciones</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-brand-cream-2 dark:divide-gray-700">
@@ -47,6 +51,7 @@
                         <td class="px-4 py-3 text-sm text-brand-brown-dark dark:text-gray-300">{{ $vehiculo->modelo }}</td>
                         <td class="px-4 py-3 text-sm text-brand-brown-dark dark:text-gray-300">{{ $vehiculo->patente }}</td>
                         <td class="px-4 py-3 text-sm text-brand-brown-dark dark:text-gray-300">{{ $vehiculo->anio }}</td>
+                        @if(Auth::user()->rol !== 'cliente')
                         <td class="px-4 py-3 text-sm space-x-3">
                             <a href="{{ route('vehiculos.edit', $vehiculo->id) }}" class="text-brand-yellow hover:text-yellow-600 hover:underline">Editar</a>
                             <form action="{{ route('vehiculos.destroy', $vehiculo->id) }}" method="POST" class="inline">
@@ -57,10 +62,11 @@
                                 </button>
                             </form>
                         </td>
+                        @endif
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="7" class="px-4 py-8 text-center text-brand-brown dark:text-gray-500">No se encontraron vehículos.</td>
+                        <td colspan="{{ Auth::user()->rol === 'cliente' ? 6 : 7 }}" class="px-4 py-8 text-center text-brand-brown dark:text-gray-500">No se encontraron vehículos.</td>
                     </tr>
                     @endforelse
                 </tbody>

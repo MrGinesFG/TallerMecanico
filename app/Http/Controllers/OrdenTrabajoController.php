@@ -10,10 +10,42 @@ class OrdenTrabajoController extends Controller
 {
     public function index()
     {
-        $ordenes = OrdenTrabajo::with('vehiculo')->get();
-        $vehiculos = Vehiculo::all();
+        $user = auth()->user();
+        if ($user->rol === 'cliente') {
+            $clienteId = $user->cliente ? $user->cliente->id : null;
+            if ($clienteId) {
+                $vehiculosIds = Vehiculo::where('cliente_id', $clienteId)->pluck('id');
+                $ordenes = OrdenTrabajo::with('vehiculo')->whereIn('vehiculo_id', $vehiculosIds)->get();
+                $vehiculos = Vehiculo::where('cliente_id', $clienteId)->get();
+            } else {
+                $ordenes = collect();
+                $vehiculos = collect();
+            }
+        } elseif ($user->rol === 'mecanico') {
+            $ordenes = OrdenTrabajo::with('vehiculo')->where('user_id', $user->id)->get();
+            $vehiculos = Vehiculo::all();
+        } else {
+            $ordenes = OrdenTrabajo::with('vehiculo')->get();
+            $vehiculos = Vehiculo::all();
+        }
 
         return view('ordenes-trabajo.index', compact('ordenes', 'vehiculos'));
+    }
+
+    private function checkAccess($ordenes_trabajo)
+    {
+        $user = auth()->user();
+        
+        if ($user->rol === 'cliente') {
+            $clienteId = $user->cliente ? $user->cliente->id : null;
+            if (!$clienteId || $ordenes_trabajo->vehiculo->cliente_id !== $clienteId) {
+                abort(403, 'No tenés permiso para acceder a esta orden de trabajo.');
+            }
+        } elseif ($user->rol === 'mecanico') {
+            if ($ordenes_trabajo->user_id !== $user->id) {
+                abort(403, 'No tenés permiso para acceder a una orden de trabajo no asignada a ti.');
+            }
+        }
     }
 
     public function create()
@@ -39,6 +71,7 @@ class OrdenTrabajoController extends Controller
 
     public function edit(OrdenTrabajo $ordenes_trabajo)
     {
+        $this->checkAccess($ordenes_trabajo);
         $vehiculos = Vehiculo::all();
 
         return view('ordenes-trabajo.edit', [
@@ -49,6 +82,7 @@ class OrdenTrabajoController extends Controller
 
     public function update(Request $request, OrdenTrabajo $ordenes_trabajo)
     {
+        $this->checkAccess($ordenes_trabajo);
         $request->validate([
             'vehiculo_id' => 'required',
             'descripcion' => 'required',
@@ -63,6 +97,9 @@ class OrdenTrabajoController extends Controller
 
     public function destroy(OrdenTrabajo $ordenes_trabajo)
     {
+        if (auth()->user()->rol === 'cliente' || auth()->user()->rol === 'mecanico') {
+            abort(403, 'No tenés permiso para eliminar órdenes de trabajo.');
+        }
         $ordenes_trabajo->delete();
 
         return redirect()->route('ordenes-trabajo.index');
