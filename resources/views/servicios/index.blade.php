@@ -2,16 +2,11 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <div>
-                <h2 class="text-3xl font-bold text-green-800">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     Gestión de Servicios
                 </h2>
-                <p class="text-gray-600 mt-1">
-                    Administra todos los servicios ofrecidos por Monkey Motors.
-                </p>
-            </div>
 
-            <img src="{{ asset('images/monkey-motors-logo.png') }}" alt="Monkey Motors" class="w-20">
-        </div>
+            </div>
     </x-slot>
 
     <div class="py-8" style="background:#FBF8F2; min-height:100vh;">
