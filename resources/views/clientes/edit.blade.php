@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
             Editar Cliente
         </h2>
     </x-slot>
 
     <div class="py-6 max-w-2xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white shadow rounded-lg p-6">
+        <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
 
             @if ($errors->any())
                 <div class="mb-4 bg-red-100 text-red-700 px-4 py-2 rounded">
@@ -23,33 +23,33 @@
                 @method('PUT')
 
                 <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700">Nombre</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre</label>
                     <input type="text" name="nombre" value="{{ old('nombre', $cliente->nombre) }}"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm">
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700">Apellido</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Apellido</label>
                     <input type="text" name="apellido" value="{{ old('apellido', $cliente->apellido) }}"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm">
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700">Email</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
                     <input type="email" name="email" value="{{ old('email', $cliente->email) }}"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm">
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700">Teléfono</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Teléfono</label>
                     <input type="text" name="telefono" value="{{ old('telefono', $cliente->telefono) }}"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm">
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700">Dirección</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Dirección</label>
                     <input type="text" name="direccion" value="{{ old('direccion', $cliente->direccion) }}"
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 shadow-sm">
                 </div>
 
                 <div class="flex justify-end gap-2">

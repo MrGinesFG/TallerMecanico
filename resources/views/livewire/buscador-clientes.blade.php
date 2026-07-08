@@ -13,7 +13,8 @@
             class="w-full rounded-lg border-brand-cream-2 dark:border-gray-700 bg-white dark:bg-gray-800 text-brand-brown-dark dark:text-gray-100 shadow-sm focus:ring-brand-yellow focus:border-brand-yellow placeholder-gray-400 dark:placeholder-gray-500 transition-colors">
     </div>
 
-    <table class="min-w-full divide-y divide-brand-cream-2 dark:divide-gray-700">
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-brand-cream-2 dark:divide-gray-700 whitespace-nowrap">
         <thead class="bg-brand-cream dark:bg-gray-900/50">
             <tr>
                 <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-brand-brown dark:text-gray-400">Nombre</th>
@@ -48,7 +49,8 @@
             </tr>
             @endforelse
         </tbody>
-    </table>
+        </table>
+    </div>
 
     <div class="mt-4">
         {{ $clientes->links() }}

@@ -20,7 +20,8 @@
         </div>
 
         <div class="bg-white dark:bg-gray-800 border border-brand-cream-2 dark:border-gray-700 shadow rounded-lg p-6 transition-colors duration-200">
-            <table class="min-w-full divide-y divide-brand-cream-2 dark:divide-gray-700">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-brand-cream-2 dark:divide-gray-700 whitespace-nowrap">
                 <thead class="bg-brand-cream dark:bg-gray-900/50">
                     <tr>
                         <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-brand-brown dark:text-gray-400">Nombre</th>
@@ -52,7 +53,8 @@
                     </tr>
                     @endforelse
                 </tbody>
-            </table>
+                </table>
+            </div>
         </div>
 
         <x-modal name="crear-servicio" :show="$errors->any()">

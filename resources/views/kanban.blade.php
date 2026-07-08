@@ -132,4 +132,5 @@
 
         document.addEventListener('DOMContentLoaded', updateCounters);
     </script>
+    <script src="https://bernardo-castilho.github.io/DragDropTouch/DragDropTouch.js"></script>
 </x-app-layout>

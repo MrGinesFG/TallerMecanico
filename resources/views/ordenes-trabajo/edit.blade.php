@@ -4,7 +4,7 @@
 
 <div class="max-w-3xl mx-auto">
 
-<h2 class="text-2xl font-bold mb-6">
+<h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
 
 Editar Orden
 
@@ -17,11 +17,11 @@ Editar Orden
 
 <div class="mb-4">
 
-<label>Vehículo</label>
+<label class="text-gray-700 dark:text-gray-300">Vehículo</label>
 
 <select
 name="vehiculo_id"
-class="border rounded w-full p-2">
+class="border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded w-full p-2">
 
 @foreach($vehiculos as $vehiculo)
 
@@ -44,34 +44,34 @@ value="{{ $vehiculo->id }}"
 
 <div class="mb-4">
 
-<label>Descripción</label>
+<label class="text-gray-700 dark:text-gray-300">Descripción</label>
 
 <textarea
 name="descripcion"
 rows="4"
-class="border rounded w-full p-2">{{ $orden->descripcion }}</textarea>
+class="border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded w-full p-2">{{ $orden->descripcion }}</textarea>
 
 </div>
 
 <div class="mb-4">
 
-<label>Fecha ingreso</label>
+<label class="text-gray-700 dark:text-gray-300">Fecha ingreso</label>
 
 <input
 type="date"
 name="fecha_ingreso"
 value="{{ $orden->fecha_ingreso }}"
-class="border rounded w-full p-2">
+class="border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded w-full p-2">
 
 </div>
 
 <div class="mb-4">
 
-<label>Estado</label>
+<label class="text-gray-700 dark:text-gray-300">Estado</label>
 
 <select
 name="estado"
-class="border rounded w-full p-2">
+class="border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded w-full p-2">
 
 <option value="Pendiente"
 {{ $orden->estado=='Pendiente'?'selected':'' }}>

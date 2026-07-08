@@ -135,6 +135,24 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @if(Auth::user()->rol === 'admin')
+            <x-responsive-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.index')">
+                {{ __('Clientes') }}
+            </x-responsive-nav-link>
+            @endif
+            @if(Auth::user()->rol === 'admin')
+            <x-responsive-nav-link :href="route('servicios.index')" :active="request()->routeIs('servicios.index')">
+                {{ __('Servicios') }}
+            </x-responsive-nav-link>
+            @endif
+            <x-responsive-nav-link :href="route('vehiculos.index')" :active="request()->routeIs('vehiculos.index')">
+                {{ __('Vehículos') }}
+            </x-responsive-nav-link>
+            @if(Auth::user()->rol !== 'cliente')
+            <x-responsive-nav-link :href="route('ordenes-trabajo.index')" :active="request()->routeIs('ordenes-trabajo.index')">
+                {{ __('Ordenes de Trabajo') }}
+            </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
@@ -146,7 +164,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -155,7 +173,7 @@
 
                     <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Cerrar Sesión') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
