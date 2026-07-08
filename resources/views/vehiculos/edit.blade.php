@@ -142,7 +142,7 @@
                     </div>
 
                     <div class="flex items-center justify-end gap-3 mt-8">
-                         }}"
+                        <a href="{{ route('vehiculos.index') }}"
                             class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
                             Cancelar
                         </a>
