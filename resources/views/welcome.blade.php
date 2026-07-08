@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monkey Motors | Taller Mecánico</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/monkey-motors-logo-2.png') }}">
     <meta name="description"
         content="Monkey Motors - Taller mecánico integral. Mecánica general, frenos, diagnóstico computarizado y más.">
 
