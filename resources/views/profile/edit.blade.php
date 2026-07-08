@@ -1,190 +1,178 @@
 <x-app-layout>
     <x-slot name="header">
         <div style="display:flex;align-items:center;gap:15px;">
-            <img src="{{ asset('images/monkey-motors-logo.png') }}"
-                 alt="Monkey Motors"
-                 style="width:65px;height:65px;">
 
             <div>
                 <h2 style="
                     margin:0;
-                    font-family:Poppins,sans-serif;
+                    font-family:font-semibold,sans-serif;
                     color:#1F4D32;
-                    font-size:30px;
-                    font-weight:800;">
-                    Mi Perfil
+                    font-size:20px;
+                    font-weight:500;">
+                    Mi Perfil</br>
                 </h2>
-
-                <p style="
-                    margin-top:5px;
-                    color:#6B4A35;
-                    font-size:15px;">
-                    Administra tu información personal y la seguridad de tu cuenta.
-                </p>
             </div>
         </div>
     </x-slot>
 
-<style>
+    <style>
+        body {
+            background: #FBF8F2;
+        }
 
-body{
-    background:#FBF8F2;
-}
+        .profile-wrapper {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
 
-.profile-wrapper{
-    max-width:1100px;
-    margin:auto;
-    padding:40px 20px;
-}
+        .profile-banner {
 
-.profile-banner{
+            background: linear-gradient(135deg, #2E6F47, #1F4D32);
 
-    background:linear-gradient(135deg,#2E6F47,#1F4D32);
+            color: white;
 
-    color:white;
+            border-radius: 20px;
 
-    border-radius:20px;
+            padding: 40px;
 
-    padding:40px;
+            margin-bottom: 35px;
 
-    margin-bottom:35px;
+            display: flex;
 
-    display:flex;
+            align-items: center;
 
-    align-items:center;
+            gap: 25px;
 
-    gap:25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
 
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
+        }
 
-}
+        .profile-avatar {
 
-.profile-avatar{
+            width: 100px;
 
-    width:100px;
+            height: 100px;
 
-    height:100px;
+            border-radius: 50%;
 
-    border-radius:50%;
+            background: white;
 
-    background:white;
+            display: flex;
 
-    display:flex;
+            justify-content: center;
 
-    justify-content:center;
+            align-items: center;
 
-    align-items:center;
+            font-size: 50px;
 
-    font-size:50px;
+        }
 
-}
+        .profile-banner h1 {
 
-.profile-banner h1{
+            margin: 0;
 
-    margin:0;
+            font-size: 34px;
 
-    font-size:34px;
+            font-family: Poppins, sans-serif;
 
-    font-family:Poppins,sans-serif;
+        }
 
-}
+        .profile-banner p {
 
-.profile-banner p{
+            margin-top: 8px;
 
-    margin-top:8px;
+            font-size: 16px;
 
-    font-size:16px;
+            opacity: .9;
 
-    opacity:.9;
+        }
 
-}
+        .card-profile {
 
-.card-profile{
+            background: white;
 
-    background:white;
+            border-radius: 18px;
 
-    border-radius:18px;
+            padding: 35px;
 
-    padding:35px;
+            margin-bottom: 30px;
 
-    margin-bottom:30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
 
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+            border-left: 8px solid #2E6F47;
 
-    border-left:8px solid #2E6F47;
+        }
 
-}
+        .card-profile h3 {
 
-.card-profile h3{
+            margin-bottom: 20px;
 
-    margin-bottom:20px;
+            color: #1F4D32;
 
-    color:#1F4D32;
+            font-family: Poppins, sans-serif;
 
-    font-family:Poppins,sans-serif;
+            font-size: 24px;
 
-    font-size:24px;
+        }
+    </style>
 
-}
+    <div class="profile-wrapper">
 
-</style>
+        <div class="profile-banner">
 
-<div class="profile-wrapper">
+            <div class="profile-avatar">
+                👤
+            </div>
 
-    <div class="profile-banner">
+            <div>
 
-        <div class="profile-avatar">
-            👤
+                <h1>
+                    {{ Auth::user()->name }}
+                </h1>
+
+                <p>
+                    {{ Auth::user()->email }}
+                </p>
+
+                <p>
+                    Bienvenido nuevamente a Monkey Motors.
+                </p>
+
+            </div>
+
         </div>
 
-        <div>
+        <div class="card-profile">
 
-            <h1>
-                {{ Auth::user()->name }}
-            </h1>
+            <h3>
+                Información personal
+            </h3>
 
-            <p>
-                {{ Auth::user()->email }}
-            </p>
+            @include('profile.partials.update-profile-information-form')
 
-            <p>
-                Bienvenido nuevamente a Monkey Motors.
-            </p>
+        </div>
+
+        <div class="card-profile">
+
+            <h3>
+                Cambiar contraseña
+            </h3>
+
+            @include('profile.partials.update-password-form')
+
+        </div>
+
+        <div class="card-profile">
+
+            <h3 style="color:#b91c1c;">
+                Zona peligrosa
+            </h3>
+
+            @include('profile.partials.delete-user-form')
 
         </div>
 
     </div>
-
-    <div class="card-profile">
-
-        <h3>
-            Información personal
-        </h3>
-
-        @include('profile.partials.update-profile-information-form')
-
-    </div>
-
-    <div class="card-profile">
-
-        <h3>
-            Cambiar contraseña
-        </h3>
-
-        @include('profile.partials.update-password-form')
-
-    </div>
-
-    <div class="card-profile">
-
-        <h3 style="color:#b91c1c;">
-            Zona peligrosa
-        </h3>
-
-        @include('profile.partials.delete-user-form')
-
-    </div>
-
-</div>
 
 </x-app-layout>
