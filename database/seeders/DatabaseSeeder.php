@@ -21,18 +21,18 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
         ]);
 
-        // 2. Creamos 5 servicios fijos en el catálogo
-        Servicio::factory(5)->create();
+        // 2. Creamos 20 servicios fijos en el catálogo
+        Servicio::factory(20)->create();
 
-        // 3. Creamos 15 clientes, y a cada uno le asignamos 1 o 2 vehículos automáticamente
-        Cliente::factory(15)->create()->each(function ($cliente) {
-            $vehiculos = Vehiculo::factory(rand(1, 2))->create([
+        // 3. Creamos 40 clientes, y a cada uno le asignamos entre 1 y 3 vehículos automáticamente
+        Cliente::factory(40)->create()->each(function ($cliente) {
+            $vehiculos = Vehiculo::factory(rand(1, 3))->create([
                 'cliente_id' => $cliente->id
             ]);
 
-            // 4. A cada vehículo le creamos una orden de trabajo de prueba
+            // 4. A cada vehículo le creamos entre 1 y 4 órdenes de trabajo de prueba
             foreach ($vehiculos as $vehiculo) {
-                OrdenTrabajo::factory()->create([
+                OrdenTrabajo::factory(rand(1, 4))->create([
                     'vehiculo_id' => $vehiculo->id
                 ]);
             }
