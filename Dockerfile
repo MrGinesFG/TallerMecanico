@@ -1,22 +1,25 @@
 FROM php:8.2-cli
 
-# Instalar dependencias para SQLite y Composer
+# 1. Instalamos git, libzip y las extensiones necesarias
 RUN apt-get update && apt-get install -y \
     libsqlite3-dev \
     unzip \
-    && docker-php-ext-install pdo pdo_sqlite
+    git \
+    libzip-dev \
+    && docker-php-ext-install pdo pdo_sqlite zip
 
-# Instalar Composer
+# 2. Instalamos Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 COPY . .
 
-# Instalar dependencias de Laravel
+# 3. Le damos memoria ilimitada a Composer para que no falle en Render
+ENV COMPOSER_MEMORY_LIMIT=-1
+
+# 4. Instalamos dependencias de Laravel
 RUN composer install --no-dev --optimize-autoloader
 
-# Dar permisos de ejecución al script
+# 5. Permisos y ejecución
 RUN chmod +x start.sh
-
-# Ejecutar el script de inicio
 CMD ["./start.sh"]
