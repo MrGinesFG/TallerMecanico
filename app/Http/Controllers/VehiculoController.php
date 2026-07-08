@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vehiculo;
-use App\Models\Client;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 
@@ -26,22 +25,25 @@ class VehiculoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'client_id' => 'required|exists:clientes,id',
+            'cliente_id' => 'required|exists:clientes,id',
             'marca' => 'required',
             'modelo' => 'required',
             'patente' => 'required|unique:vehiculos,patente',
-            'anio' => 'required|integer'
+            'anio' => 'required|integer',
         ]);
 
         Vehiculo::create($request->all());
 
-        return redirect()->route('vehiculos.index')
-                         ->with('success', 'Vehículo creado correctamente');
+        return redirect()
+            ->route('vehiculos.index')
+            ->with('success', 'Vehículo creado correctamente');
     }
 
     public function show(string $id)
     {
-        //
+        $vehiculo = Vehiculo::with('cliente')->findOrFail($id);
+
+        return view('vehiculos.show', compact('vehiculo'));
     }
 
     public function edit(string $id)
@@ -57,17 +59,18 @@ class VehiculoController extends Controller
         $vehiculo = Vehiculo::findOrFail($id);
 
         $request->validate([
-            'client_id' => 'required|exists:clientes,id',
+            'cliente_id' => 'required|exists:clientes,id',
             'marca' => 'required',
             'modelo' => 'required',
             'patente' => 'required|unique:vehiculos,patente,' . $vehiculo->id,
-            'anio' => 'required|integer'
+            'anio' => 'required|integer',
         ]);
 
         $vehiculo->update($request->all());
 
-        return redirect()->route('vehiculos.index')
-                         ->with('success', 'Vehículo actualizado correctamente');
+        return redirect()
+            ->route('vehiculos.index')
+            ->with('success', 'Vehículo actualizado correctamente');
     }
 
     public function destroy(string $id)
@@ -76,7 +79,8 @@ class VehiculoController extends Controller
 
         $vehiculo->delete();
 
-        return redirect()->route('vehiculos.index')
-                         ->with('success', 'Vehículo eliminado correctamente');
+        return redirect()
+            ->route('vehiculos.index')
+            ->with('success', 'Vehículo eliminado correctamente');
     }
 }

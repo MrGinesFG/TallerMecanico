@@ -14,10 +14,10 @@
                 <div>
                     <label>Cliente</label>
 
-                    <select name="client_id">
-                        @foreach($clients as $client)
-                            <option value="{{ $client->id }}">
-                                {{ $client->nombre }}
+                    <select name="cliente_id">
+                        @foreach($clientes as $cliente)
+                            <option value="{{ $cliente->id }}">
+                                {{ $cliente->nombre }}
                             </option>
                         @endforeach
                     </select>
