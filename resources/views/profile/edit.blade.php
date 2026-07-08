@@ -1,180 +1,39 @@
 <x-app-layout>
     <x-slot name="header">
-        <div style="display:flex;align-items:center;gap:15px;">
-
-            <div>
-                <h2 style="
-                    margin:0;
-                    font-family:Poppins,sans-serif;
-                    color:#1F4D32;
-                    font-size:20px;
-                    font-weight:800;">
-                    Mi Perfil
-                </h2>
-
-
-            </div>
+        <div class="flex items-center gap-4">
+            <h2 class="m-0 font-heading text-brand-green-dark dark:text-brand-green text-xl font-bold">
+                Mi Perfil
+            </h2>
         </div>
     </x-slot>
 
-    <style>
-        body {
-            background: #FBF8F2;
-        }
+    <div class="max-w-6xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
 
-        .profile-wrapper {
-            max-width: 1100px;
-            margin: auto;
-            padding: 40px 20px;
-        }
-
-        .profile-banner {
-
-            background: linear-gradient(135deg, #2E6F47, #1F4D32);
-
-            color: white;
-
-            border-radius: 20px;
-
-            padding: 40px;
-
-            margin-bottom: 35px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 25px;
-
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
-
-        }
-
-        .profile-avatar {
-
-            width: 100px;
-
-            height: 100px;
-
-            border-radius: 50%;
-
-            background: white;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            font-size: 50px;
-
-        }
-
-        .profile-banner h1 {
-
-            margin: 0;
-
-            font-size: 34px;
-
-            font-family: Poppins, sans-serif;
-
-        }
-
-        .profile-banner p {
-
-            margin-top: 8px;
-
-            font-size: 16px;
-
-            opacity: .9;
-
-        }
-
-        .card-profile {
-
-            background: white;
-
-            border-radius: 18px;
-
-            padding: 35px;
-
-            margin-bottom: 30px;
-
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
-
-            border-left: 8px solid #2E6F47;
-
-        }
-
-        .card-profile h3 {
-
-            margin-bottom: 20px;
-
-            color: #1F4D32;
-
-            font-family: Poppins, sans-serif;
-
-            font-size: 24px;
-
-        }
-    </style>
-
-    <div class="profile-wrapper">
-
-        <div class="profile-banner">
-
-            <div class="profile-avatar">
+        <div class="bg-gradient-to-br from-brand-green to-brand-green-dark text-white rounded-2xl p-10 mb-8 flex items-center gap-6 shadow-lg shadow-brand-green/20">
+            <div class="w-24 h-24 rounded-full bg-white flex justify-center items-center text-5xl shrink-0">
                 👤
             </div>
-
             <div>
-
-                <h1>
-                    {{ Auth::user()->name }}
-                </h1>
-
-                <p>
-                    {{ Auth::user()->email }}
-                </p>
-
-                <p>
-                    Bienvenido nuevamente a Monkey Motors.
-                </p>
-
+                <h1 class="m-0 text-3xl font-heading">{{ Auth::user()->name }}</h1>
+                <p class="mt-2 text-base opacity-90">{{ Auth::user()->email }}</p>
+                <p class="text-base opacity-90">Bienvenido nuevamente a Monkey Motors.</p>
             </div>
-
         </div>
 
-        <div class="card-profile">
-
-            <h3>
-                Información personal
-            </h3>
-
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 mb-8 shadow-sm border border-brand-cream-2 dark:border-gray-700 border-l-8 border-l-brand-green dark:border-l-brand-green transition-colors duration-200">
+            <h3 class="mb-5 text-brand-green-dark dark:text-brand-green font-heading text-2xl font-semibold">Información personal</h3>
             @include('profile.partials.update-profile-information-form')
-
         </div>
 
-        <div class="card-profile">
-
-            <h3>
-                Cambiar contraseña
-            </h3>
-
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 mb-8 shadow-sm border border-brand-cream-2 dark:border-gray-700 border-l-8 border-l-brand-green dark:border-l-brand-green transition-colors duration-200">
+            <h3 class="mb-5 text-brand-green-dark dark:text-brand-green font-heading text-2xl font-semibold">Cambiar contraseña</h3>
             @include('profile.partials.update-password-form')
-
         </div>
 
-        <div class="card-profile">
-
-            <h3 style="color:#b91c1c;">
-                Zona peligrosa
-            </h3>
-
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 mb-8 shadow-sm border border-brand-cream-2 dark:border-gray-700 border-l-8 border-l-red-600 dark:border-l-red-500 transition-colors duration-200">
+            <h3 class="mb-5 text-red-600 dark:text-red-500 font-heading text-2xl font-semibold">Zona peligrosa</h3>
             @include('profile.partials.delete-user-form')
-
         </div>
 
     </div>
-
 </x-app-layout>

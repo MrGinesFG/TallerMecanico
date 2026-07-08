@@ -1,6 +1,6 @@
-﻿<x-app-layout>
+<x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-2xl text-gray-800 leading-tight">
+        <h2 class="font-semibold font-heading text-2xl text-brand-green-dark dark:text-brand-green leading-tight">
             Dashboard
         </h2>
     </x-slot>
@@ -8,68 +8,68 @@
     <div class="py-10">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <section class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+            <section class="overflow-hidden rounded-3xl border border-brand-cream-2 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm transition-colors duration-200">
                 <div class="grid gap-5 p-6 md:grid-cols-3 md:p-8">
-                    <section class="kanban-column rounded-3xl border border-slate-200 bg-slate-50 p-4 shadow-sm">
+                    <section class="kanban-column rounded-3xl border border-brand-cream-2 dark:border-gray-700 bg-brand-cream-2 dark:bg-gray-900 p-4 shadow-sm transition-colors duration-200">
                         <div class="mb-4 flex items-center justify-between">
                             <div>
-                                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-700">Pendiente</p>
-                                <p class="text-xs text-slate-500">Nuevas ordenes</p>
+                                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-brand-brown-dark dark:text-gray-300">Pendiente</p>
+                                <p class="text-xs text-brand-brown dark:text-gray-400">Nuevas ordenes</p>
                             </div>
-                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-700">3</span>
+                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white dark:bg-gray-800 text-sm font-semibold text-brand-green-dark dark:text-brand-green">3</span>
                         </div>
                         <div class="space-y-4 min-h-[320px]" data-status="pending" ondrop="dropCard(event)" ondragover="allowDrop(event)">
-                            <article draggable="true" ondragstart="dragCard(event)" data-id="1" class="kanban-card rounded-3xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                            <article draggable="true" ondragstart="dragCard(event)" data-id="1" class="kanban-card rounded-3xl border border-brand-cream-2 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-gray-900/50">
                                 <div class="flex items-start justify-between gap-3">
-                                    <p class="text-sm font-semibold text-slate-900">Cambio aceite Ford Fiesta</p>
-                                    <span class="text-xs font-semibold uppercase tracking-[0.16em] text-amber-500">A</span>
+                                    <p class="text-sm font-semibold text-brand-brown-dark dark:text-gray-100">Cambio aceite Ford Fiesta</p>
+                                    <span class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-yellow">A</span>
                                 </div>
-                                <p class="mt-3 text-sm leading-6 text-slate-600">Cliente: Laura P. | Motor 1.6 | Filtro y líquido.</p>
+                                <p class="mt-3 text-sm leading-6 text-brand-brown dark:text-gray-400">Cliente: Laura P. | Motor 1.6 | Filtro y líquido.</p>
                             </article>
-                            <article draggable="true" ondragstart="dragCard(event)" data-id="2" class="kanban-card rounded-3xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                            <article draggable="true" ondragstart="dragCard(event)" data-id="2" class="kanban-card rounded-3xl border border-brand-cream-2 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-gray-900/50">
                                 <div class="flex items-start justify-between gap-3">
-                                    <p class="text-sm font-semibold text-slate-900">Alineación Toyota Corolla</p>
-                                    <span class="text-xs font-semibold uppercase tracking-[0.16em] text-amber-500">B</span>
+                                    <p class="text-sm font-semibold text-brand-brown-dark dark:text-gray-100">Alineación Toyota Corolla</p>
+                                    <span class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-yellow">B</span>
                                 </div>
-                                <p class="mt-3 text-sm leading-6 text-slate-600">Cliente: Lucas M. | Balanceo y ajuste.</p>
+                                <p class="mt-3 text-sm leading-6 text-brand-brown dark:text-gray-400">Cliente: Lucas M. | Balanceo y ajuste.</p>
                             </article>
                         </div>
                     </section>
 
-                    <section class="kanban-column rounded-3xl border border-slate-200 bg-slate-50 p-4 shadow-sm">
+                    <section class="kanban-column rounded-3xl border border-brand-cream-2 dark:border-gray-700 bg-brand-cream-2 dark:bg-gray-900 p-4 shadow-sm transition-colors duration-200">
                         <div class="mb-4 flex items-center justify-between">
                             <div>
-                                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-700">En progreso</p>
-                                <p class="text-xs text-slate-500">Tareas activas</p>
+                                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-brand-brown-dark dark:text-gray-300">En progreso</p>
+                                <p class="text-xs text-brand-brown dark:text-gray-400">Tareas activas</p>
                             </div>
-                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-700">2</span>
+                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white dark:bg-gray-800 text-sm font-semibold text-brand-green-dark dark:text-brand-green">2</span>
                         </div>
                         <div class="space-y-4 min-h-[320px]" data-status="in-progress" ondrop="dropCard(event)" ondragover="allowDrop(event)">
-                            <article draggable="true" ondragstart="dragCard(event)" data-id="3" class="kanban-card rounded-3xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                            <article draggable="true" ondragstart="dragCard(event)" data-id="3" class="kanban-card rounded-3xl border border-brand-cream-2 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-gray-900/50">
                                 <div class="flex items-start justify-between gap-3">
-                                    <p class="text-sm font-semibold text-slate-900">Reparación de freno trasero</p>
-                                    <span class="text-xs font-semibold uppercase tracking-[0.16em] text-amber-500">C</span>
+                                    <p class="text-sm font-semibold text-brand-brown-dark dark:text-gray-100">Reparación de freno trasero</p>
+                                    <span class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-yellow">C</span>
                                 </div>
-                                <p class="mt-3 text-sm leading-6 text-slate-600">Cliente: Diego R. | Cambio pastillas y prueba.</p>
+                                <p class="mt-3 text-sm leading-6 text-brand-brown dark:text-gray-400">Cliente: Diego R. | Cambio pastillas y prueba.</p>
                             </article>
                         </div>
                     </section>
 
-                    <section class="kanban-column rounded-3xl border border-slate-200 bg-slate-50 p-4 shadow-sm">
+                    <section class="kanban-column rounded-3xl border border-brand-cream-2 dark:border-gray-700 bg-brand-cream-2 dark:bg-gray-900 p-4 shadow-sm transition-colors duration-200">
                         <div class="mb-4 flex items-center justify-between">
                             <div>
-                                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-700">Finalizado</p>
-                                <p class="text-xs text-slate-500">Listo para entrega</p>
+                                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-brand-brown-dark dark:text-gray-300">Finalizado</p>
+                                <p class="text-xs text-brand-brown dark:text-gray-400">Listo para entrega</p>
                             </div>
-                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-200 text-sm font-semibold text-slate-700">1</span>
+                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white dark:bg-gray-800 text-sm font-semibold text-brand-green-dark dark:text-brand-green">1</span>
                         </div>
                         <div class="space-y-4 min-h-[320px]" data-status="done" ondrop="dropCard(event)" ondragover="allowDrop(event)">
-                            <article draggable="true" ondragstart="dragCard(event)" data-id="4" class="kanban-card rounded-3xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                            <article draggable="true" ondragstart="dragCard(event)" data-id="4" class="kanban-card rounded-3xl border border-brand-cream-2 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-gray-900/50">
                                 <div class="flex items-start justify-between gap-3">
-                                    <p class="text-sm font-semibold text-slate-900">Instalación de batería Bosch</p>
-                                    <span class="text-xs font-semibold uppercase tracking-[0.16em] text-amber-500">D</span>
+                                    <p class="text-sm font-semibold text-brand-brown-dark dark:text-gray-100">Instalación de batería Bosch</p>
+                                    <span class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-yellow">D</span>
                                 </div>
-                                <p class="mt-3 text-sm leading-6 text-slate-600">Cliente: Marta S. | Revisión y test final.</p>
+                                <p class="mt-3 text-sm leading-6 text-brand-brown dark:text-gray-400">Cliente: Marta S. | Revisión y test final.</p>
                             </article>
                         </div>
                     </section>

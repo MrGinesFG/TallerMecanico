@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .stripe {
+        background: repeating-linear-gradient(-45deg,
+            #2E6F47 0px, #2E6F47 26px,
+            #FBF8F2 26px, #FBF8F2 52px);
+    }
+    .dark .stripe {
+        background: repeating-linear-gradient(-45deg,
+            #1F4D32 0px, #1F4D32 26px,
+            #111827 26px, #111827 52px); /* Dark green and dark gray */
+    }
+}
