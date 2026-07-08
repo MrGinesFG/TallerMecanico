@@ -14,11 +14,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
-# 3. Le damos memoria ilimitada a Composer para que no falle en Render
+# 3. Le damos memoria ilimitada a Composer
 ENV COMPOSER_MEMORY_LIMIT=-1
 
-# 4. Instalamos dependencias de Laravel
-RUN composer install --no-dev --optimize-autoloader
+# 4. Instalamos dependencias ignorando requerimientos de plataforma 
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 
 # 5. Permisos y ejecución
 RUN chmod +x start.sh
