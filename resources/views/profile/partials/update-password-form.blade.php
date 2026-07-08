@@ -1,13 +1,6 @@
 <section>
 
     <header style="margin-bottom:25px;">
-        <h2 style="
-            font-size:28px;
-            color:#1F4D32;
-            font-family:Poppins,sans-serif;
-            font-weight:700;">
-            Seguridad
-        </h2>
 
         <p style="
             color:#6B4A35;
@@ -16,18 +9,14 @@
         </p>
     </header>
 
-    <form method="POST"
-          action="{{ route('password.update') }}"
-          class="space-y-6">
+    <form method="POST" action="{{ route('password.update') }}" class="space-y-6">
 
         @csrf
         @method('PUT')
 
         <div style="margin-bottom:20px;">
 
-            <label
-                for="update_password_current_password"
-                style="
+            <label for="update_password_current_password" style="
                     display:block;
                     margin-bottom:8px;
                     font-weight:600;
@@ -37,30 +26,21 @@
 
             </label>
 
-            <input
-                id="update_password_current_password"
-                name="current_password"
-                type="password"
-                autocomplete="current-password"
-
-                style="
+            <input id="update_password_current_password" name="current_password" type="password"
+                autocomplete="current-password" style="
                     width:100%;
                     padding:14px;
                     border-radius:10px;
                     border:2px solid #DDD;
                     font-size:15px;">
 
-            <x-input-error
-                :messages="$errors->updatePassword->get('current_password')"
-                class="mt-2"/>
+            <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
 
         </div>
 
         <div style="margin-bottom:20px;">
 
-            <label
-                for="update_password_password"
-                style="
+            <label for="update_password_password" style="
                     display:block;
                     margin-bottom:8px;
                     font-weight:600;
@@ -70,30 +50,20 @@
 
             </label>
 
-            <input
-                id="update_password_password"
-                name="password"
-                type="password"
-                autocomplete="new-password"
-
-                style="
+            <input id="update_password_password" name="password" type="password" autocomplete="new-password" style="
                     width:100%;
                     padding:14px;
                     border-radius:10px;
                     border:2px solid #DDD;
                     font-size:15px;">
 
-            <x-input-error
-                :messages="$errors->updatePassword->get('password')"
-                class="mt-2"/>
+            <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
 
         </div>
 
         <div style="margin-bottom:25px;">
 
-            <label
-                for="update_password_password_confirmation"
-                style="
+            <label for="update_password_password_confirmation" style="
                     display:block;
                     margin-bottom:8px;
                     font-weight:600;
@@ -103,29 +73,19 @@
 
             </label>
 
-            <input
-                id="update_password_password_confirmation"
-                name="password_confirmation"
-                type="password"
-                autocomplete="new-password"
-
-                style="
+            <input id="update_password_password_confirmation" name="password_confirmation" type="password"
+                autocomplete="new-password" style="
                     width:100%;
                     padding:14px;
                     border-radius:10px;
                     border:2px solid #DDD;
                     font-size:15px;">
 
-            <x-input-error
-                :messages="$errors->updatePassword->get('password_confirmation')"
-                class="mt-2"/>
+            <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
 
         </div>
 
-        <button
-            type="submit"
-
-            style="
+        <button type="submit" style="
                 background:#2E6F47;
                 color:white;
                 padding:14px 28px;
@@ -143,9 +103,9 @@
         @if (session('status') === 'password-updated')
 
             <span style="
-                margin-left:15px;
-                color:green;
-                font-weight:bold;">
+                        margin-left:15px;
+                        color:green;
+                        font-weight:bold;">
 
                 ✔ Contraseña actualizada correctamente
 

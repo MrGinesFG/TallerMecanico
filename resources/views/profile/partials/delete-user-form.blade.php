@@ -1,13 +1,6 @@
 <section>
 
     <header style="margin-bottom:25px;">
-        <h2 style="
-            font-size:28px;
-            color:#B91C1C;
-            font-family:Poppins,sans-serif;
-            font-weight:700;">
-            Zona de Peligro
-        </h2>
 
         <p style="
             color:#6B4A35;
@@ -24,27 +17,10 @@
         padding:25px;
         border-radius:12px;">
 
-        <h3 style="
-            margin-top:0;
-            color:#991B1B;
-            font-size:22px;">
-            Eliminar cuenta
-        </h3>
 
-        <p style="
-            color:#7F1D1D;
-            margin-bottom:25px;">
 
-            Antes de eliminar tu cuenta, asegúrate de no necesitar la información almacenada.
-            Todos tus datos serán eliminados permanentemente.
 
-        </p>
-
-        <button
-            x-data=""
-            x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-
-            style="
+        <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')" style="
                 background:#DC2626;
                 color:white;
                 border:none;
@@ -61,15 +37,9 @@
 
     </div>
 
-    <x-modal
-        name="confirm-user-deletion"
-        :show="$errors->userDeletion->isNotEmpty()"
-        focusable>
+    <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
 
-        <form
-            method="POST"
-            action="{{ route('profile.destroy') }}"
-            class="p-6">
+        <form method="POST" action="{{ route('profile.destroy') }}" class="p-6">
 
             @csrf
             @method('DELETE')
@@ -96,9 +66,7 @@
 
             <div style="margin-bottom:25px;">
 
-                <label
-                    for="password"
-                    style="
+                <label for="password" style="
                         display:block;
                         margin-bottom:8px;
                         color:#2E6F47;
@@ -108,23 +76,13 @@
 
                 </label>
 
-                <input
-
-                    id="password"
-
-                    name="password"
-
-                    type="password"
-
-                    style="
+                <input id="password" name="password" type="password" style="
                         width:100%;
                         padding:14px;
                         border-radius:10px;
                         border:2px solid #DDD;">
 
-                <x-input-error
-                    :messages="$errors->userDeletion->get('password')"
-                    class="mt-2"/>
+                <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
 
             </div>
 
@@ -133,11 +91,7 @@
                 justify-content:flex-end;
                 gap:15px;">
 
-                <button
-                    type="button"
-                    x-on:click="$dispatch('close')"
-
-                    style="
+                <button type="button" x-on:click="$dispatch('close')" style="
                         background:#E5E7EB;
                         color:#374151;
                         border:none;
@@ -149,10 +103,7 @@
 
                 </button>
 
-                <button
-                    type="submit"
-
-                    style="
+                <button type="submit" style="
                         background:#DC2626;
                         color:white;
                         border:none;
