@@ -1,10 +1,6 @@
 <section>
-
-    <header style="margin-bottom:25px;">
-
-        <p style="
-            color:#6B4A35;
-            margin-top:8px;">
+    <header class="mb-6">
+        <p class="mt-2 text-brand-brown-dark dark:text-gray-300">
             Actualiza tu nombre y correo electrónico.
         </p>
     </header>
@@ -14,110 +10,48 @@
     </form>
 
     <form method="POST" action="{{ route('profile.update') }}" class="space-y-6">
-
         @csrf
         @method('PATCH')
 
-        <div style="margin-bottom:20px;">
-
-            <label for="name" style="
-                    display:block;
-                    margin-bottom:8px;
-                    font-weight:600;
-                    color:#2E6F47;">
+        <div>
+            <label for="name" class="block mb-2 font-semibold text-brand-green-dark dark:text-brand-green">
                 Nombre
             </label>
-
-            <input id="name" name="name" type="text" value="{{ old('name', $user->name) }}" required autofocus style="
-                    width:100%;
-                    padding:14px;
-                    border-radius:10px;
-                    border:2px solid #DDD;
-                    font-size:15px;
-                ">
-
+            <input id="name" name="name" type="text" value="{{ old('name', $user->name) }}" required autofocus 
+                class="w-full p-3.5 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 text-[15px] focus:border-brand-green focus:ring focus:ring-brand-green/30 transition-colors">
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
-
         </div>
 
-        <div style="margin-bottom:25px;">
-
-            <label for="email" style="
-                    display:block;
-                    margin-bottom:8px;
-                    font-weight:600;
-                    color:#2E6F47;">
+        <div>
+            <label for="email" class="block mb-2 font-semibold text-brand-green-dark dark:text-brand-green">
                 Correo electrónico
             </label>
-
-            <input id="email" name="email" type="email" value="{{ old('email', $user->email) }}" required style="
-                    width:100%;
-                    padding:14px;
-                    border-radius:10px;
-                    border:2px solid #DDD;
-                    font-size:15px;
-                ">
-
+            <input id="email" name="email" type="email" value="{{ old('email', $user->email) }}" required 
+                class="w-full p-3.5 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 text-[15px] focus:border-brand-green focus:ring focus:ring-brand-green/30 transition-colors">
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
-
         </div>
 
         @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
-
-            <div style="
-                        background:#FFF8E1;
-                        padding:15px;
-                        border-radius:10px;
-                        margin-bottom:25px;">
-
-                <p>
-
+            <div class="bg-amber-100 dark:bg-amber-900/40 p-4 rounded-lg mb-6">
+                <p class="text-amber-800 dark:text-amber-200 text-sm">
                     Tu correo aún no está verificado.
-
-                    <button form="send-verification" style="
-                                    border:none;
-                                    background:none;
-                                    color:#2E6F47;
-                                    font-weight:bold;
-                                    cursor:pointer;">
-
+                    <button form="send-verification" class="underline font-bold hover:text-amber-900 dark:hover:text-amber-100">
                         Reenviar correo de verificación
-
                     </button>
-
                 </p>
-
             </div>
-
         @endif
 
-        <button type="submit" style="
-                background:#2E6F47;
-                color:white;
-                padding:14px 28px;
-                border:none;
-                border-radius:10px;
-                font-size:16px;
-                cursor:pointer;
-                font-weight:bold;">
+        <div class="flex items-center gap-4">
+            <button type="submit" class="bg-brand-green-dark hover:bg-brand-green dark:bg-brand-green dark:hover:bg-brand-green-light text-white px-7 py-3.5 rounded-lg text-base font-bold transition-colors">
+                Guardar cambios
+            </button>
 
-            Guardar cambios
-
-        </button>
-
-        @if(session('status') === 'profile-updated')
-
-            <span style="
-                        margin-left:15px;
-                        color:green;
-                        font-weight:bold;">
-
-                ✔ Datos actualizados correctamente
-
-            </span>
-
-        @endif
-
+            @if(session('status') === 'profile-updated')
+                <span class="text-green-600 dark:text-green-400 font-bold">
+                    ✔ Datos actualizados correctamente
+                </span>
+            @endif
+        </div>
     </form>
-
 </section>

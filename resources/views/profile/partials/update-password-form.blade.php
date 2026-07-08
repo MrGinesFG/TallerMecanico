@@ -1,118 +1,51 @@
 <section>
-
-    <header style="margin-bottom:25px;">
-
-        <p style="
-            color:#6B4A35;
-            margin-top:8px;">
+    <header class="mb-6">
+        <p class="mt-2 text-brand-brown-dark dark:text-gray-300">
             Cambia tu contraseña para mantener tu cuenta protegida.
         </p>
     </header>
 
     <form method="POST" action="{{ route('password.update') }}" class="space-y-6">
-
         @csrf
         @method('PUT')
 
-        <div style="margin-bottom:20px;">
-
-            <label for="update_password_current_password" style="
-                    display:block;
-                    margin-bottom:8px;
-                    font-weight:600;
-                    color:#2E6F47;">
-
+        <div>
+            <label for="update_password_current_password" class="block mb-2 font-semibold text-brand-green-dark dark:text-brand-green">
                 Contraseña actual
-
             </label>
-
-            <input id="update_password_current_password" name="current_password" type="password"
-                autocomplete="current-password" style="
-                    width:100%;
-                    padding:14px;
-                    border-radius:10px;
-                    border:2px solid #DDD;
-                    font-size:15px;">
-
+            <input id="update_password_current_password" name="current_password" type="password" autocomplete="current-password" 
+                class="w-full p-3.5 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 text-[15px] focus:border-brand-green focus:ring focus:ring-brand-green/30 transition-colors">
             <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
-
         </div>
 
-        <div style="margin-bottom:20px;">
-
-            <label for="update_password_password" style="
-                    display:block;
-                    margin-bottom:8px;
-                    font-weight:600;
-                    color:#2E6F47;">
-
+        <div>
+            <label for="update_password_password" class="block mb-2 font-semibold text-brand-green-dark dark:text-brand-green">
                 Nueva contraseña
-
             </label>
-
-            <input id="update_password_password" name="password" type="password" autocomplete="new-password" style="
-                    width:100%;
-                    padding:14px;
-                    border-radius:10px;
-                    border:2px solid #DDD;
-                    font-size:15px;">
-
+            <input id="update_password_password" name="password" type="password" autocomplete="new-password" 
+                class="w-full p-3.5 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 text-[15px] focus:border-brand-green focus:ring focus:ring-brand-green/30 transition-colors">
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
-
         </div>
 
-        <div style="margin-bottom:25px;">
-
-            <label for="update_password_password_confirmation" style="
-                    display:block;
-                    margin-bottom:8px;
-                    font-weight:600;
-                    color:#2E6F47;">
-
+        <div>
+            <label for="update_password_password_confirmation" class="block mb-2 font-semibold text-brand-green-dark dark:text-brand-green">
                 Confirmar nueva contraseña
-
             </label>
-
-            <input id="update_password_password_confirmation" name="password_confirmation" type="password"
-                autocomplete="new-password" style="
-                    width:100%;
-                    padding:14px;
-                    border-radius:10px;
-                    border:2px solid #DDD;
-                    font-size:15px;">
-
+            <input id="update_password_password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" 
+                class="w-full p-3.5 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 text-[15px] focus:border-brand-green focus:ring focus:ring-brand-green/30 transition-colors">
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
-
         </div>
 
-        <button type="submit" style="
-                background:#2E6F47;
-                color:white;
-                padding:14px 28px;
-                border:none;
-                border-radius:10px;
-                font-size:16px;
-                cursor:pointer;
-                font-weight:bold;
-                transition:.3s;">
+        <div class="flex items-center gap-4">
+            <button type="submit" class="bg-brand-green-dark hover:bg-brand-green dark:bg-brand-green dark:hover:bg-brand-green-light text-white px-7 py-3.5 rounded-lg text-base font-bold transition-colors">
+                Cambiar contraseña
+            </button>
 
-            Cambiar contraseña
-
-        </button>
-
-        @if (session('status') === 'password-updated')
-
-            <span style="
-                        margin-left:15px;
-                        color:green;
-                        font-weight:bold;">
-
-                ✔ Contraseña actualizada correctamente
-
-            </span>
-
-        @endif
-
+            @if (session('status') === 'password-updated')
+                <span class="text-green-600 dark:text-green-400 font-bold">
+                    ✔ Contraseña actualizada correctamente
+                </span>
+            @endif
+        </div>
     </form>
-
 </section>

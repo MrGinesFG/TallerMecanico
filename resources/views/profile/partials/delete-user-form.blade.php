@@ -1,125 +1,52 @@
 <section>
-
-    <header style="margin-bottom:25px;">
-
-        <p style="
-            color:#6B4A35;
-            margin-top:8px;
-            line-height:1.7;">
+    <header class="mb-6">
+        <p class="mt-2 text-brand-brown-dark dark:text-gray-300 leading-relaxed">
             Si eliminas tu cuenta, toda la información relacionada con ella se borrará de forma permanente.
             Esta acción no podrá deshacerse.
         </p>
     </header>
 
-    <div style="
-        background:#FEF2F2;
-        border-left:6px solid #DC2626;
-        padding:25px;
-        border-radius:12px;">
-
-
-
-
-        <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')" style="
-                background:#DC2626;
-                color:white;
-                border:none;
-                padding:14px 28px;
-                border-radius:10px;
-                cursor:pointer;
-                font-size:16px;
-                font-weight:bold;
-                transition:.3s;">
-
+    <div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-600 dark:border-red-500 p-6 rounded-xl">
+        <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')" 
+            class="bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white px-7 py-3.5 rounded-lg text-base font-bold transition-colors">
             Eliminar cuenta
-
         </button>
-
     </div>
 
     <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
-
-        <form method="POST" action="{{ route('profile.destroy') }}" class="p-6">
-
+        <form method="POST" action="{{ route('profile.destroy') }}" class="p-8 bg-white dark:bg-gray-800 rounded-2xl">
             @csrf
             @method('DELETE')
 
-            <h2 style="
-                color:#B91C1C;
-                font-size:28px;
-                font-family:Poppins,sans-serif;
-                margin-bottom:20px;">
-
+            <h2 class="text-red-700 dark:text-red-500 text-2xl font-heading mb-4">
                 Confirmar eliminación
-
             </h2>
 
-            <p style="
-                color:#6B4A35;
-                line-height:1.7;
-                margin-bottom:25px;">
-
+            <p class="text-brand-brown-dark dark:text-gray-300 leading-relaxed mb-6">
                 Esta acción eliminará definitivamente tu cuenta.
                 Para confirmar, escribe tu contraseña.
-
             </p>
 
-            <div style="margin-bottom:25px;">
-
-                <label for="password" style="
-                        display:block;
-                        margin-bottom:8px;
-                        color:#2E6F47;
-                        font-weight:600;">
-
+            <div class="mb-6">
+                <label for="password" class="block mb-2 font-semibold text-brand-green-dark dark:text-brand-green">
                     Contraseña
-
                 </label>
-
-                <input id="password" name="password" type="password" style="
-                        width:100%;
-                        padding:14px;
-                        border-radius:10px;
-                        border:2px solid #DDD;">
-
+                <input id="password" name="password" type="password" 
+                    class="w-full p-3.5 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 text-[15px] focus:border-red-500 focus:ring focus:ring-red-500/30 transition-colors">
                 <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
-
             </div>
 
-            <div style="
-                display:flex;
-                justify-content:flex-end;
-                gap:15px;">
-
-                <button type="button" x-on:click="$dispatch('close')" style="
-                        background:#E5E7EB;
-                        color:#374151;
-                        border:none;
-                        padding:12px 24px;
-                        border-radius:10px;
-                        cursor:pointer;">
-
+            <div class="flex justify-end gap-4 mt-6">
+                <button type="button" x-on:click="$dispatch('close')" 
+                    class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 px-6 py-3 rounded-lg font-semibold transition-colors">
                     Cancelar
-
                 </button>
 
-                <button type="submit" style="
-                        background:#DC2626;
-                        color:white;
-                        border:none;
-                        padding:12px 24px;
-                        border-radius:10px;
-                        cursor:pointer;
-                        font-weight:bold;">
-
+                <button type="submit" 
+                    class="bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white px-6 py-3 rounded-lg font-bold transition-colors">
                     Eliminar definitivamente
-
                 </button>
-
             </div>
-
         </form>
-
     </x-modal>
-
 </section>
