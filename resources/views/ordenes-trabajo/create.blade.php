@@ -69,9 +69,9 @@ class="border rounded w-full p-2">
 name="estado"
 class="border rounded w-full p-2">
 
-<option>Pendiente</option>
-<option>En proceso</option>
-<option>Finalizado</option>
+<option value="pendiente">Pendiente</option>
+<option value="en_proceso">En proceso</option>
+<option value="terminado">Finalizado</option>
 
 </select>
 

@@ -37,7 +37,7 @@
                     <button
                         type="button"
                         wire:click="eliminar({{ $cliente->id }})"
-                        onclick="confirm('¿Estás seguro de eliminar a {{ $cliente->nombre }} {{ $cliente->apellido }}?') || event.stopImmediatePropagation()"
+                        wire:confirm="¿Estás seguro de eliminar a {{ $cliente->nombre }} {{ $cliente->apellido }}?"
                         class="text-red-600 dark:text-red-400 hover:underline">
                         Eliminar
                     </button>

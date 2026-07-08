@@ -73,18 +73,18 @@ class="border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded w
 name="estado"
 class="border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded w-full p-2">
 
-<option value="Pendiente"
-{{ $orden->estado=='Pendiente'?'selected':'' }}>
+<option value="pendiente"
+{{ $orden->estado=='pendiente'?'selected':'' }}>
 Pendiente
 </option>
 
-<option value="En proceso"
-{{ $orden->estado=='En proceso'?'selected':'' }}>
+<option value="en_proceso"
+{{ $orden->estado=='en_proceso'?'selected':'' }}>
 En proceso
 </option>
 
-<option value="Finalizado"
-{{ $orden->estado=='Finalizado'?'selected':'' }}>
+<option value="terminado"
+{{ $orden->estado=='terminado'?'selected':'' }}>
 Finalizado
 </option>
 
