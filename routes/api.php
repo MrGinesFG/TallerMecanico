@@ -6,8 +6,9 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ClienteController;
 use App\Http\Controllers\Api\OrdenTrabajoController;
 
-// Ruta pública: cualquiera puede intentar loguearse para conseguir un token
+// Ruta pública: cualquiera puede intentar loguearse para conseguir un token o registrarse
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
 
 // Rutas protegidas: SOLO accesibles si mandan un token válido en la cabecera
 Route::middleware('auth:sanctum')->group(function () {

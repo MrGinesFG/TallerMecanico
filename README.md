@@ -1,59 +1,59 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Taller Mecánico - Monkey Motors
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema Integral de Gestión Operativa, Trazabilidad de Reparaciones y API REST para el taller mecánico Monkey Motors.
 
-## About Laravel
+Este proyecto ha sido desarrollado como trabajo final para la asignatura Programación III de la Tecnicatura Universitaria en Programación (TUP) de la UTN FRRE.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Integrantes del Equipo
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Gines Fabrizio (Integrante 1):** Diseño General y Módulo de Clientes. Responsable de la plantilla maestra (Layout), página principal, CRUD de Clientes con Livewire y ficha detallada.
+- **Mendoza Fabian (Integrante 2):** Autenticación y Gestión Automotriz. Responsable del módulo de Login, CRUD de Vehículos y Órdenes, y Control de Estados con Livewire.
+- **Cuellar Alex (Integrante 3):** Módulo de Servicios y Analítica. Responsable de la implementación técnica del CRUD de Servicios, la lógica de vinculación de servicios en tabla pivote, y el Dashboard de Gestión y Componente Livewire Estadístico.
+- **Sanchez Martin (Integrante 4):** Desarrollo del Ecosistema API REST. Responsable del módulo de autenticación de usuarios (Register), los endpoints y la arquitectura de servicios web, la securización mediante Laravel Sanctum y la confección de esta documentación técnica.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Stack Tecnológico
 
-## Learning Laravel
+- **Backend:** Laravel 11+ (Procesamiento lógico, seguridad y orquestación general)
+- **Persistencia de Datos:** MySQL (Almacenamiento relacional estricto con integridad referencial)
+- **Capa de Reactividad:** Laravel Livewire (Actualización de órdenes en tiempo real y búsquedas predictivas)
+- **Frontend Estructural:** Tailwind CSS (Estilos adaptables a tablets y smartphones)
+- **Seguridad API:** Laravel Sanctum (Emisión de tokens portadores para consumos REST)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Entidades del Dominio
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+El sistema opera sobre cinco modelos nucleares interconectados:
+1. **User:** Gestiona las credenciales de acceso del personal.
+2. **Cliente:** Contiene los datos personales de contacto e identidad de los propietarios.
+3. **Vehiculo:** Entidad dependiente del cliente, con número de chasis y patente.
+4. **OrdenTrabajo:** Documento dinámico que nuclea el estado de la reparación, costo, y fechas.
+5. **Servicio:** Catálogo maestro de prestaciones estándar ofrecidas por el taller.
 
-## Laravel Sponsors
+## Arquitectura de Servicios Web (API REST)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+El ecosistema API REST se estructura bajo el archivo `routes/api.php` y permite la interacción de sistemas externos mediante endpoints JSON seguros. Las rutas principales son:
+- **POST `/api/login`:** Generación de tokens de acceso (Bearer Token).
+- **POST `/api/register`:** Interfaz de altas de usuarios del sistema con validación estricta y asignación inicial de roles.
+- **GET `/api/clientes` y `/api/clientes/{id}`:** Consulta de clientes.
+- **GET `/api/ordenes` y `/api/ordenes/{id}`:** Consulta del historial estructurado de órdenes de trabajo.
+- **POST `/api/logout`:** Cierre de sesión y revocación de token.
 
-### Premium Partners
+Todas las rutas operativas de la API están protegidas bajo el middleware `auth:sanctum`.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Despliegue y Hosting
 
-## Contributing
+El sistema se encuentra empaquetado para su ejecución en entornos en la nube y actualmente hospedado en **Render.com**.
+- URL de Producción: [https://monkeymotors.onrender.com](https://monkeymotors.onrender.com)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Instrucciones de Instalación Local
 
-## Code of Conduct
+1. Clonar el repositorio.
+2. Ejecutar `composer install`.
+3. Ejecutar `npm install && npm run build`.
+4. Copiar `.env.example` a `.env` y configurar las credenciales de base de datos (`DB_DATABASE=taller_mecanico`).
+5. Generar la clave de la aplicación: `php artisan key:generate`.
+6. Ejecutar las migraciones y seeders: `php artisan migrate --seed` (Nota: Seguir la política anticonflictos de nunca modificar migraciones ya pusheadas).
+7. Iniciar el servidor de desarrollo: `php artisan serve`.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Configuración de Idioma
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+El sistema se encuentra configurado para soportar traducción completa de mensajes de validación y sistema al idioma Español (`es`), cumpliendo con los requisitos de localización exigidos.
